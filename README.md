@@ -6,5 +6,5 @@ You will find the two dataset used in this work (movielens1m and dbbook), and al
 2. to learn word embeddings
 3. to train the deep model and get the predictions.
 
-In addition, we added the pre-trained embeddings used for this work, so to skip the embedding learning step.
+In addition, we added the pre-trained embeddings used for this work (dict saved as .pickle files), so to skip the embedding learning step.
 Source code is documented, so to make it easier to run it.
