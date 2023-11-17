@@ -184,17 +184,17 @@ def model_entity_dropout_selfatt_crossatt(X,y,dim_embeddings,epochs,batch_size, 
   x2_2_item = keras.layers.Dense(256, activation=tf.nn.relu)(x2_item)
   x2_3_item = keras.layers.Dense(128, activation=tf.nn.relu)(x2_2_item)
 
-  # self attenzione 1 - merge graph user e word user
+  # self attention 1 - merge graph user and word user
   concat_user = keras.layers.Concatenate()([x1_3_user, x2_3_user])
   attention_w_user = keras.layers.Dense(128, activation='softmax')(concat_user)
   merged_user = attention_w_user * x1_3_user + (1 - attention_w_user) * x2_3_user
 
-  # self attenzione 2 - merge graph item e word item
+  # self attention 2 - merge graph item and word item
   concat_item = keras.layers.Concatenate()([x1_3_item, x2_3_item])
   attention_w_item = keras.layers.Dense(128, activation='softmax')(concat_item)
   merged_item = attention_w_item * x1_3_item + (1 - attention_w_item) * x2_3_item
 
-  # cross attenzione - merge dei due merged
+  # cross attention - merge dei due merged
   attention_weights = keras.layers.Dot(axes=-1)([merged_user, merged_item])
   attention_weights = keras.layers.Dense(128, activation='softmax')(attention_weights)
   merged = keras.layers.Add()([merged_user * attention_weights, merged_item * (1 - attention_weights)])
@@ -231,7 +231,7 @@ graph_emb = pickle.load(open(source_graph_path, 'rb'))
 word_emb = pickle.load(open(source_text_path, 'rb'))
 
 
-# il the model already exixts, it's loaded
+# if the model already exixts, it's loaded
 if os.path.exists(model_path):
 
   recsys_model = tf.keras.models.load_model(model_path)
