@@ -232,7 +232,7 @@ graph_emb = pickle.load(open(source_graph_path, 'rb'))
 word_emb = pickle.load(open(source_text_path, 'rb'))
 
 
-# if the model already exixts, it's loaded
+# if the model already exists, it's loaded
 if os.path.exists(model_path):
 
   recsys_model = tf.keras.models.load_model(model_path)
