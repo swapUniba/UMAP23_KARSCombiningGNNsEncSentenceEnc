@@ -195,7 +195,7 @@ def model_entity_dropout_selfatt_crossatt(X,y,dim_embeddings,epochs,batch_size, 
   attention_w_item = keras.layers.Dense(128, activation='softmax')(concat_item)
   merged_item = attention_w_item * x1_3_item + (1 - attention_w_item) * x2_3_item
 
-  # cross attention - merge dei due merged
+  # cross attention - merge of both merged
   attention_weights = keras.layers.Dot(axes=-1)([merged_user, merged_item])
   attention_weights = keras.layers.Dense(128, activation='softmax')(attention_weights)
   merged = keras.layers.Add()([merged_user * attention_weights, merged_item * (1 - attention_weights)])
