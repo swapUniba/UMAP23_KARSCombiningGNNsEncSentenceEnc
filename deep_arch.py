@@ -245,7 +245,7 @@ else:
   X, y, dim_embeddings, _, _, _ = matching_graph_bert_ids(users, items, ratings, graph_emb, word_emb)
   
   # training the model
-  recsys_model = run_layers_entity_dropout_selfatt_crossatt(X,y,dim_embeddings,epochs=30,batch_size=512, value=0.7)
+  recsys_model = model_entity_dropout_selfatt_crossatt(X,y,dim_embeddings,epochs=30,batch_size=512, value=0.7)
 
   # saving the model
   recsys_model.save(model_path)
