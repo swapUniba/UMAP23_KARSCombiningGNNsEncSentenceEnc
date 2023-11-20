@@ -97,12 +97,14 @@ def read_ratings(filename):
 
 def top_scores(predictions,n):
 
+  top_n_scores_list = []
   top_n_scores = pd.DataFrame()
 
   for u in list(set(predictions['users'])):
     p = predictions.loc[predictions['users'] == u ]
-    top_n_scores = top_n_scores.append(p.head(n))
+    top_n_scores_list += [p.head(n)]
 
+  top_n_scores = pd.DataFrame(top_n_scores_list)
   return top_n_scores
 
 
