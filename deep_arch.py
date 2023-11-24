@@ -227,7 +227,7 @@ predictions_path = 'path/to/predictions'
 
 
 # read training data
-users, items, ratings = read_ratings('movielens/train.tsv')
+users, items, ratings = read_ratings('path/to/train.tsv')
 
 # read graph and word embedding
 graph_emb = pickle.load(open(source_graph_path, 'rb'))
@@ -253,7 +253,7 @@ else:
   recsys_model.save(model_path)
 
 # read test ratings to be predicted
-users, items, ratings = read_ratings('movielens/test.tsv')
+users, items, ratings = read_ratings('path/to/test.tsv')
 
 # embeddings for test
 X, y, dim_embeddings, nu, ni, nr = matching_graph_bert_ids(users, items, ratings, graph_emb, word_emb)
