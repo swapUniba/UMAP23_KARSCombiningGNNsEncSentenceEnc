@@ -97,12 +97,14 @@ def read_ratings(filename):
 
 def top_scores(predictions,n):
 
+  top_n_scores_list = []
   top_n_scores = pd.DataFrame()
 
   for u in list(set(predictions['users'])):
     p = predictions.loc[predictions['users'] == u ]
-    top_n_scores = top_n_scores.append(p.head(n))
+    top_n_scores_list += [p.head(n)]
 
+  top_n_scores = pd.DataFrame(top_n_scores_list)
   return top_n_scores
 
 
@@ -225,7 +227,7 @@ predictions_path = 'path/to/predictions'
 
 
 # read training data
-users, items, ratings = read_ratings('movielens/train.tsv')
+users, items, ratings = read_ratings('path/to/train.tsv')
 
 # read graph and word embedding
 graph_emb = pickle.load(open(source_graph_path, 'rb'))
@@ -251,7 +253,7 @@ else:
   recsys_model.save(model_path)
 
 # read test ratings to be predicted
-users, items, ratings = read_ratings('movielens/test.tsv')
+users, items, ratings = read_ratings('path/to/test.tsv')
 
 # embeddings for test
 X, y, dim_embeddings, nu, ni, nr = matching_graph_bert_ids(users, items, ratings, graph_emb, word_emb)

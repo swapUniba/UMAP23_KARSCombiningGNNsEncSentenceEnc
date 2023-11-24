@@ -4,14 +4,14 @@ from sentence_transformers import SentenceTransformer
 import os
 import pickle
 
-# descriptive file in the format 'id_item;text'
-df = pd.read_csv("movies-ml1m.csv")
+# descriptive file in the format 'id_item,text'
+df = pd.read_csv("movielens/text_ml1m.csv")
 
 ids = np.array(df["item"])
 descriptions= np.array(df["description"])
 
 # word model
-model = SentenceTransformer('sota_minilm-l12-v1')
+model = SentenceTransformer('all-MiniLM-L12-v1')
 
 embeddings = []
 
@@ -30,8 +30,8 @@ dictionary = {}
 
 i = 0
 while i < len(ids):
-  dictionary[str(ids[i])] = embeddings[i]
+  dictionary[i] = embeddings[i]
   i += 1
 
 # save embeddings
-pickle.dump(open('word_emb.pickle', 'rb'))
+pickle.dump(dictionary, open('word_emb.pickle', 'wb'))
