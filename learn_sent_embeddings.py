@@ -4,8 +4,8 @@ from sentence_transformers import SentenceTransformer
 import os
 import pickle
 
-# descriptive file in the format 'id_item;text'
-df = pd.read_csv("movies-ml1m.csv")
+# descriptive file in the format 'id_item,text'
+df = pd.read_csv("movielens/text_ml1m.csv")
 
 ids = np.array(df["item"])
 descriptions= np.array(df["description"])
