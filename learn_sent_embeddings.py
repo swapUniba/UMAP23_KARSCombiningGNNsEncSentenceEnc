@@ -11,7 +11,7 @@ ids = np.array(df["item"])
 descriptions= np.array(df["description"])
 
 # word model
-model = SentenceTransformer('sota_minilm-l12-v1')
+model = SentenceTransformer('all-MiniLM-L12-v1')
 
 embeddings = []
 
