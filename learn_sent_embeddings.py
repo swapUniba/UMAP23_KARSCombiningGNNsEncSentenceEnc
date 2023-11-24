@@ -30,7 +30,7 @@ dictionary = {}
 
 i = 0
 while i < len(ids):
-  dictionary[str(ids[i])] = embeddings[i]
+  dictionary[i] = embeddings[i]
   i += 1
 
 # save embeddings
