@@ -68,7 +68,7 @@ for emb_model in emb_models:
                 )
 
                 if not os.path.exists(folder):
-                    os.mkdir(folder)
+                    os.makedirs(folder)
 
 
                 torch.save(result, folder+'/pipeline_result.dat')
@@ -99,5 +99,5 @@ for emb_model in emb_models:
             
             except Exception as e:
 
-                print(colored('An error occoured in ' + printline, 'red'))
+                print(colored('An error occured in ' + printline, 'red'))
                 print(colored(e, 'red'))
