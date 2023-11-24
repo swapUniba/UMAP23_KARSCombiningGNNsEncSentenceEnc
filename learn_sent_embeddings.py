@@ -34,4 +34,4 @@ while i < len(ids):
   i += 1
 
 # save embeddings
-pickle.dump(open('word_emb.pickle', 'rb'))
+pickle.dump(dictionary, open('word_emb.pickle', 'wb'))
