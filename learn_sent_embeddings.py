@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from sentence_transformers import SentenceTransformer
-import os
 import pickle
 
 # descriptive file in the format 'id_item,text'
