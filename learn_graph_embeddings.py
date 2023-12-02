@@ -1,8 +1,6 @@
 from pykeen.triples import TriplesFactory
 from pykeen.pipeline import pipeline
-import numpy
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import os
 from os import path
 import torch
@@ -31,7 +29,7 @@ for emb_model in emb_models:
 
             checkpoint_name_file = "checkpoint_"+dataset+'_'+emb_model+'_k='+str(emb_dim)
 
-            if os.path.isfile(folder+'/embeddings.tsv'):
+            if path.isfile(folder+'/embeddings.tsv'):
                 print(colored('Existing embedding in ' + folder,'blue'))
                 continue
 
@@ -67,7 +65,7 @@ for emb_model in emb_models:
                     ),
                 )
 
-                if not os.path.exists(folder):
+                if not path.exists(folder):
                     os.makedirs(folder)
 
 
